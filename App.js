@@ -8,7 +8,6 @@ import axios from 'axios'
 /*function App() {
   return <Main />;
 }
-
 export default App;
 */
 
@@ -29,7 +28,7 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
-    this.getPokemon();
+     this.getPokemon();
     console.log('soy un componeneteeeeeeee')
   }
 
@@ -67,7 +66,8 @@ onChange = async e=>{
 
     return (
       <View style={styles.Listado}>
-        <Text> Listado Pokemon</Text>
+      <View style={styles.form}>
+      <Text> Listado Pokemon</Text>
         <TextInput
         type="text"
         placeholder='Buscar Pokemon'
@@ -78,6 +78,7 @@ onChange = async e=>{
         <TouchableOpacity style={styles.btn}>
           <Text>Buscar Pokemon</Text>
         </TouchableOpacity>
+      </View>
        
         <FlatList
         data={this.state.pokemon}
@@ -92,34 +93,49 @@ onChange = async e=>{
 
   }
 }
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-    
+
   },
   Listado: {
     flex: 1,
     paddingTop: 50,
     paddingLeft: 5,
-   
+
   },
-  input:{
-    borderColor:'black',
-    color:'black',
+  input: {
+    borderColor: 'black',
+    color: 'black',
     height: 40,
+    width: 290,
     margin: 12,
     borderWidth: 1,
-    borderRadius:40,
-    
+    borderRadius: 40,
+
   },
-  btn:{
+  btn: {
     width: 150,
     height: 50,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#ecf0f1',
+    backgroundColor: '#00d4ff',
+    borderRadius: 40,
+  },
+  form:{
+    borderColor: 'black',
+    color: 'black',
+    height: 180,
+    margin: 12,
+    borderWidth: 1,
+    borderRadius: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
   }
 });
+
+
