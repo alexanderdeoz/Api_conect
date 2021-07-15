@@ -1,5 +1,5 @@
 import React, { setState } from 'react';
-import { Text, View, StyleSheet, FlatList ,TextInput,TouchableOpacity} from 'react-native';
+import { Text, View, StyleSheet, FlatList, TextInput, TouchableOpacity } from 'react-native';
 import Pokedex from './Component/Pokedex'
 import axios from 'axios'
 
@@ -22,14 +22,14 @@ export default class App extends React.Component {
       loading: false,
       pokemon: [],
       url: 'https://pokeapi.co/api/v2/pokemon',
-      busqueda:''
+      busqueda: ''
     }
 
   }
 
   componentDidMount() {
-     this.getPokemon();
-    console.log('soy un componeneteeeeeeee')
+    this.getPokemon();
+    console.log('soy un componeneteeeeeeee ')
   }
 
   getPokemon = () => {
@@ -46,46 +46,44 @@ export default class App extends React.Component {
 
   };
 
-onChange = async e=>{
-  e.persist();
-  await this.setState({busqueda:e.target.value});
-  console.log(this.state.busqueda) ;
-}
+  handleOnChange = async e => {
+    e.persist();
+    await this.setState({ busqueda: e.target.value });
+    console.log(this.state.busqueda);
+  }
 
   render() {
     if (this.state.loading) {
       return (
         <View style={styles.container}>
-          <Pokedex/>
+          <Pokedex />
           <Text> Descargando Pokemon </Text>
         </View>
       );
     }
 
-
-
     return (
       <View style={styles.Listado}>
-      <View style={styles.form}>
-      <Text> Listado Pokemon</Text>
-        <TextInput
-        type="text"
-        placeholder='Buscar Pokemon'
-        style={styles.input}
-        onChange={this.onChange}
-        value={this.state.busqueda}
-        ></TextInput>
-        <TouchableOpacity style={styles.btn}>
-          <Text>Buscar Pokemon</Text>
-        </TouchableOpacity>
-      </View>
-       
+        <View style={styles.form}>
+          <Text> Listado Pokemon</Text>
+          <TextInput
+            type="text"
+            placeholder='Buscar Pokemon'
+            style={styles.input}
+            onChange={this.handleOnChange}
+            value={this.state.busqueda}
+          ></TextInput>
+          <TouchableOpacity style={styles.btn}>
+            <Text>Buscar Pokemon</Text>
+          </TouchableOpacity>
+        </View>
+
         <FlatList
-        data={this.state.pokemon}
-        renderItem={
-          ({item})=><Text>{item.name}</Text>
-        }
-        keyExtractor={(item,index)=>index.toString()}
+          data={this.state.pokemon}
+          renderItem={
+            ({ item }) => <Text>{item.name}</Text>
+          }
+          keyExtractor={(item, index) => index.toString()}
         ></FlatList>
 
       </View>
@@ -126,7 +124,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#00d4ff',
     borderRadius: 40,
   },
-  form:{
+  form: {
     borderColor: 'black',
     color: 'black',
     height: 180,
